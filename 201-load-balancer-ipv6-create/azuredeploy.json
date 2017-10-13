@@ -56,7 +56,7 @@
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[variables('availabilitySetName')]",
       "apiVersion": "2016-04-30-preview",
-      "location": "[resourceGroup().location]",
+      "location": "West Europe",
       "properties": {
         "platformFaultDomainCount": "2",
         "platformUpdateDomainCount": "2",
@@ -67,7 +67,7 @@
       "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('ipv4PublicIPAddressName')]",
-      "location": "[resourceGroup().location]",
+      "location": "West Europe",
       "properties": {
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "[variables('ipv4PublicIPAddressType')]",
@@ -80,7 +80,7 @@
       "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('ipv6PublicIPAddressName')]",
-      "location": "[resourceGroup().location]",
+      "location": "West Europe",
       "properties": {
         "publicIPAddressVersion": "IPv6",
         "publicIPAllocationMethod": "[variables('ipv6PublicIPAddressType')]",
@@ -93,7 +93,7 @@
       "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('vnetName')]",
-      "location": "[resourceGroup().location]",
+      "location": "West Europe",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -114,7 +114,7 @@
       "apiVersion": "2016-03-30",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[concat(variables('nicNamePrefix'), copyindex())]",
-      "location": "[resourceGroup().location]",
+      "location": "West Europe",
       "copy": {
         "name": "nicLoop",
         "count": "[variables('numberOfInstances')]"
@@ -164,7 +164,7 @@
       "apiVersion": "2016-03-30",
       "name": "[variables('lbName')]",
       "type": "Microsoft.Network/loadBalancers",
-      "location": "[resourceGroup().location]",
+      "location": "West Europe",
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', variables('ipv4PublicIPAddressName'))]",
         "[concat('Microsoft.Network/publicIPAddresses/', variables('ipv6PublicIPAddressName'))]"
@@ -281,7 +281,7 @@
         "name": "virtualMachineLoop",
         "count": "[variables('numberOfInstances')]"
       },
-      "location": "[resourceGroup().location]",
+      "location": "West Europe",
       "dependsOn": [
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicNamePrefix'), copyindex())]",
         "[concat('Microsoft.Compute/availabilitySets/', variables('availabilitySetName'))]"
